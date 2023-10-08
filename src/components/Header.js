@@ -16,7 +16,7 @@ export const Header = () => {
         setUser(res);
       });
     }
-  });
+  }, [isAuthenticated]);
 
   return (
     <Navbar className="bg-body-tertiary">

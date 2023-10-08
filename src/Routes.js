@@ -9,7 +9,6 @@ const Router = () => {
   const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem("TOKEN");
   const path = window.location.pathname;
-  console.log(path);
   if (!isAuthenticated && path !== "/signup") {
     navigate("/login");
   }
