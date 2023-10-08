@@ -5,15 +5,25 @@ import { Card, Container } from "react-bootstrap";
 
 export const Blogs = () => {
   const { id } = useParams();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (id) {
-      fetchApi(`blogs/${id}`, true, "GET").then((res) => setBlog(res));
+      fetchApi(`blogs/${id}`, true, "GET").then((res) => {
+        setBlog(res);
+        setLoading(false);
+      });
     }
   }, [id]);
   const [blog, setBlog] = useState(null);
   return (
     <Container className="p-2">
-      {blog ? <BlogPresentational blog={blog} /> : <h1>Not found</h1>}
+      {loading ? (
+        <h1>Loading</h1>
+      ) : blog ? (
+        <BlogPresentational blog={blog} />
+      ) : (
+        <h1>Not found</h1>
+      )}
     </Container>
   );
 };
