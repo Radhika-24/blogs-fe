@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:3001/";
+export const API_URL = "https://reflective-dear-fish.glitch.me/";
 
 export const fetchApi = async (endpoint, auth, method, body) => {
   try {
