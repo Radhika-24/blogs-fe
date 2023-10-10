@@ -2,12 +2,16 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { fetchApi } from "../config";
 import { PLANS } from "../constants";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   const isAuthenticated = localStorage.getItem("TOKEN");
   const handleLogout = async () => {
     await fetchApi("logout", true, "GET");
     localStorage.removeItem("TOKEN");
+    navigate("/login");
   };
   const [user, setUser] = useState(null);
   useEffect(() => {
